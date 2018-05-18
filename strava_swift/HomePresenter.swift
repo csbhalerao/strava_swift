@@ -28,16 +28,10 @@ class HomePresenter{
         Alamofire.request(url!, method: .get, headers: headers).responseJSON { (response) in
             //            print(response.result)
             if response.result .isSuccess{
-                var feeds = [Feed]()
                 if let data = response.data {
                     do{
+                        var feeds = [Feed]()
                         feeds = try JSONDecoder().decode([Feed].self, from: data)
-                        //                let dataString = String(data: data, encoding: .utf8)
-                        //                debugPrint(dataString)
-//                        for feed in self.feeds{
-////                            print(feed.name,"->", feed.distance, ",", feed.totalElevationGain, ",", feed.movingTime)
-//                            feeds.append(feed)
-//                        }
                         self.view?.onSuccessfulFeedFetching(feeds: feeds)
                     } catch {
                         print("Error occured while parsing")
@@ -54,6 +48,21 @@ class HomePresenter{
                     self.view?.onFeedApiFailure(error: "Error else")
                 }
             }
+        }
+    }
+    
+    func getAtheletInformation(){
+        let url = URL(string: "https://www.strava.com/api/v3/athletes/12474362")
+        let headers = ["authorization" : "Bearer " + token]
+        Alamofire.request(url!, method: .get, headers: headers).responseJSON { (response) in
+            if response.result .isSuccess{
+    
+                if let data = response.data {
+                       let dataString = String(data: data, encoding: .utf8)
+                    print(dataString)
+                }
+            }
+                
         }
     }
 }
