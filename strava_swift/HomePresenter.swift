@@ -9,11 +9,6 @@
 import Foundation
 import Alamofire
 
-//protocol HomePresenterView : class {
-//    func onSuccessfulFeedFetching(feeds: [Feed])
-//    func onFeedApiFailure(error: String)
-//}
-
 class HomePresenter{
     let token: String = "d1cc9d1cf24a2018d010ea9d21587a901d12190c"
     let view: HomePresenterView?
@@ -25,9 +20,10 @@ class HomePresenter{
     func fetchMyFeeds(pageNumber: Int, perPage: Int){
         let url = URL(string: "https://www.strava.com/api/v3/athlete/activities?page=" + String(pageNumber)+"&per_page="+String(perPage))
         let headers = ["authorization" : "Bearer " + token]
+        self.view?.showProgress()
         Alamofire.request(url!, method: .get, headers: headers).responseJSON { (response) in
-            //            print(response.result)
             if response.result .isSuccess{
+                self.view?.hideProgress()
                 if let data = response.data {
                     do{
                         var feeds = [Feed]()
@@ -41,6 +37,7 @@ class HomePresenter{
             }
             
             if response.result.isFailure {
+                self.view?.hideProgress()
                 if let apiError = response.result.error?.localizedDescription{
                     self.view?.onFeedApiFailure(error: apiError)
                     print("Error occured..")
@@ -59,7 +56,6 @@ class HomePresenter{
     
                 if let data = response.data {
                        let dataString = String(data: data, encoding: .utf8)
-                    print(dataString)
                 }
             }
                 

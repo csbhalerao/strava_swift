@@ -17,6 +17,8 @@
 		616FB0A420A9946000209C9C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616FB0A220A9946000209C9C /* HomeViewController.swift */; };
 		616FB0A520A9946000209C9C /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616FB0A320A9946000209C9C /* HomeViewController.xib */; };
 		616FB0A720A9B78100209C9C /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616FB0A620A9B78100209C9C /* HomePresenter.swift */; };
+		61BDE18120AC042000197341 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BDE17F20AC042000197341 /* FeedTableViewCell.swift */; };
+		61BDE18220AC042000197341 /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BDE18020AC042000197341 /* FeedTableViewCell.xib */; };
 		B277B6CF2A05DC090F0DEF46 /* Pods_strava_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC7A0AD581DAFF75AC02824 /* Pods_strava_swift.framework */; };
 		E7BFC8A2D39839CAEFD8F95F /* Pods_strava_swiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FD37C3B5827C8C9583D406 /* Pods_strava_swiftTests.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +51,8 @@
 		616FB0A220A9946000209C9C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		616FB0A320A9946000209C9C /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		616FB0A620A9B78100209C9C /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		61BDE17F20AC042000197341 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		61BDE18020AC042000197341 /* FeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
 		B56E827D5EC3E92EFDD3A60D /* Pods-strava_swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-strava_swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-strava_swift/Pods-strava_swift.debug.xcconfig"; sourceTree = "<group>"; };
 		C2EB9EB678A60174E0809B2F /* Pods-strava_swiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-strava_swiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-strava_swiftTests/Pods-strava_swiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ECC7A0AD581DAFF75AC02824 /* Pods_strava_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_strava_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +110,8 @@
 		616FB07E20A9906800209C9C /* strava_swift */ = {
 			isa = PBXGroup;
 			children = (
+				61BDE17F20AC042000197341 /* FeedTableViewCell.swift */,
+				61BDE18020AC042000197341 /* FeedTableViewCell.xib */,
 				616FB07F20A9906800209C9C /* AppDelegate.swift */,
 				616FB08120A9906800209C9C /* ViewController.swift */,
 				616FB08320A9906800209C9C /* Main.storyboard */,
@@ -225,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				616FB08D20A9906900209C9C /* LaunchScreen.storyboard in Resources */,
+				61BDE18220AC042000197341 /* FeedTableViewCell.xib in Resources */,
 				616FB08A20A9906900209C9C /* Assets.xcassets in Resources */,
 				616FB08520A9906800209C9C /* Main.storyboard in Resources */,
 				616FB0A520A9946000209C9C /* HomeViewController.xib in Resources */,
@@ -303,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				616FB08220A9906800209C9C /* ViewController.swift in Sources */,
+				61BDE18120AC042000197341 /* FeedTableViewCell.swift in Sources */,
 				616FB08820A9906800209C9C /* strava_swift.xcdatamodeld in Sources */,
 				616FB08020A9906800209C9C /* AppDelegate.swift in Sources */,
 				616FB0A720A9B78100209C9C /* HomePresenter.swift in Sources */,

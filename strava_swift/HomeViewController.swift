@@ -11,13 +11,16 @@ import UIKit
 protocol HomePresenterView : class {
     func onSuccessfulFeedFetching(feeds: [Feed])
     func onFeedApiFailure(error: String)
+    func showProgress()
+    func hideProgress()
 }
 
 class HomeViewController: UIViewController, HomePresenterView, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var progressIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var feedsTableView: UITableView!
+    
     var presenter: HomePresenter?
     var feeds = [Feed]()
-
-    @IBOutlet weak var feedsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,7 @@ class HomeViewController: UIViewController, HomePresenterView, UITableViewDataSo
         self.feedsTableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedTableViewCell")
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return self.feeds.count
     }
     
@@ -40,16 +43,29 @@ class HomeViewController: UIViewController, HomePresenterView, UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 109
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     func onSuccessfulFeedFetching(feeds: [Feed]) {
         self.feeds.append(contentsOf: feeds)
-        print(self.feeds.count)
         self.feedsTableView.reloadData()
     }
     
     func onFeedApiFailure(error: String) {
-        
+        //todo add alert
     }
     
+    func showProgress() {
+        progressIndicator.isHidden = false
+        progressIndicator.startAnimating()
+    }
+    
+    func hideProgress() {
+        progressIndicator.isHidden = true
+        progressIndicator.stopAnimating()
+    }
 }
 
 
@@ -61,10 +77,19 @@ struct Feed :Decodable{
         case name = "name"
         case distance = "distance"
         case startDate = "start_date"
+        case feedMap = "map"
     }
     let name: String
     let distance:Double
     let movingTime:Int
     let totalElevationGain: Double
     let startDate: String
+    let feedMap: FeedMap
+}
+
+struct FeedMap:Decodable {
+    enum CodingKeys: String, CodingKey {
+        case summaryPolyline = "summary_polyline"
+    }
+    let summaryPolyline:String
 }
