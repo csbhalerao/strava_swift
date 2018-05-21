@@ -40,9 +40,28 @@ class FeedDetailViewController: UIViewController {
             mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 10.0))
             mapView.animate(toZoom: 14.0)
             polyline.map = mapView
+            let count = path.count()
+            for index in 1...path.count() {
+                print(index)
+                if index == 1 || index == (count - 1){
+                    let marker = GMSMarker()
+                    let coOrdinate =  path.coordinate(at: index)
+                    marker.position = CLLocationCoordinate2D(latitude: coOrdinate.latitude, longitude: coOrdinate.longitude)
+                    if index == 1 {
+                        marker.title = "Start Point"
+                        marker.snippet = "Start Point"
+                        marker.icon = GMSMarker.markerImage(with: UIColor.green)
+                    } else {
+                        marker.title = "End Point"
+                        marker.snippet = "End Point"
+                        marker.icon = GMSMarker.markerImage(with: UIColor.blue)
+                    }
+                    marker.map = mapView
+                }
+            }
         }
         
         self.view = mapView
     }
-
+    
 }
