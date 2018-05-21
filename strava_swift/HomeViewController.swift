@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, HomePresenterView, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedsTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         presenter = HomePresenter(view:self)
         presenter?.fetchMyFeeds(pageNumber: 1, perPage: 20)
         self.feedsTableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedTableViewCell")
@@ -41,7 +42,7 @@ class HomeViewController: UIViewController, HomePresenterView, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 109
+        return 115
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
