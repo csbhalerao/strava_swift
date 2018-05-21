@@ -8,18 +8,23 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    let GOOGLE_MAP_KEY = "AIzaSyAlUz5JnW1bhIbvCBAUBAPc6CEUtSOMw5U"
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        GMSServices.provideAPIKey("AIzaSyAlUz5JnW1bhIbvCBAUBAPc6CEUtSOMw5U")
+        //GMSPlacesClient.provideAPIKey("AIzaSyAlUz5JnW1bhIbvCBAUBAPc6CEUtSOMw5U")
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         let homeViewController = HomeViewController()
         window?.rootViewController = UINavigationController(rootViewController: homeViewController)
+        
         return true
     }
 

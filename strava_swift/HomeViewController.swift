@@ -46,6 +46,10 @@ class HomeViewController: UIViewController, HomePresenterView, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let feed = self.feeds[indexPath.row]
+        let feedDetailViewController = FeedDetailViewController()
+        feedDetailViewController.feed = feed
+        self.navigationController?.pushViewController(feedDetailViewController, animated: true)
         
     }
     
@@ -79,6 +83,8 @@ struct Feed :Decodable{
         case distance = "distance"
         case startDate = "start_date"
         case feedMap = "map"
+        case startLatlng = "start_latlng"
+        case endLatlng = "end_latlng"
     }
     let name: String
     let distance:Double
@@ -86,11 +92,13 @@ struct Feed :Decodable{
     let totalElevationGain: Double
     let startDate: String
     let feedMap: FeedMap
+    let startLatlng: [Double]
+    let endLatlng: [Double]
 }
 
 struct FeedMap:Decodable {
     enum CodingKeys: String, CodingKey {
         case summaryPolyline = "summary_polyline"
     }
-    let summaryPolyline:String
+    let summaryPolyline:String?
 }

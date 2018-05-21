@@ -4,9 +4,9 @@
 target 'strava_swift' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
-    Pods for strava_swift
-    pod 'Alamofire', '~> 4.7'		
+    pod 'Alamofire', '~> 4.7'
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
 
   target 'strava_swiftTests' do
     inherit! :search_paths
